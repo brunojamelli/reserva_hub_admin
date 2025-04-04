@@ -17,7 +17,7 @@ class OcorrenciaCard extends StatelessWidget {
       elevation: 2,
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
-        leading: _getStatusIcon(ocorrencia.status),
+        leading: _getStatusIcon(ocorrencia.status ?? ""),
         title: Text(
           ocorrencia.tipo,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -41,7 +41,7 @@ class OcorrenciaCard extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              'Registrado em: ${_formatDate(ocorrencia.data_registro)}',
+              'Registrado em: ${_formatDate(ocorrencia.dataRegistro ?? DateTime.now())}',
               style: Theme.of(context).textTheme.labelSmall,
             ),
           ],

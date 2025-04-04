@@ -40,9 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
           }
 
           final top3 = snapshot.data!
-          .where((o) => o.data_registro != null)
+          .where((o) => o.dataRegistro != null)
           .toList()
-          ..sort((a, b) =>b.data_registro!.compareTo(a.data_registro!))
+          ..sort((a, b) =>b.dataRegistro!.compareTo(a.dataRegistro!))
           ..take(3);
 
           return ListView(
