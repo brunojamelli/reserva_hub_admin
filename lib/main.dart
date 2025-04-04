@@ -14,7 +14,7 @@ class AdminApp extends StatelessWidget {
     return MaterialApp(
       title: 'App Administrativo',
       theme: ThemeData(
-        primarySwatch: Colors.green, // Cor verde estilo WhatsApp
+        primarySwatch: Colors.indigo, 
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MainMenuScreen(),
