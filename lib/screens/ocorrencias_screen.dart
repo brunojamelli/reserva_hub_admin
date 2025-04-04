@@ -70,15 +70,6 @@ class _OcorrenciaScreenState extends State<OcorrenciaScreen> {
           },
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   child: const Icon(Icons.add),
-      //   onPressed: () {
-      //     // Navegar para tela de nova ocorrência
-      //     // Navigator.push(context, MaterialPageRoute(
-      //     //   builder: (context) => NovaOcorrenciaScreen(),
-      //     // ));
-      //   },
-      // ),
     );
   }
 }
