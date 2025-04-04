@@ -1,6 +1,6 @@
 class Ocorrencia {
   final String id;
-  final int idUsuario;
+  final int id_usuario;
   String tipo;
   String local;
   String descricao;
@@ -11,7 +11,7 @@ class Ocorrencia {
 
   Ocorrencia({
     required this.id,
-    required this.idUsuario,
+    required this.id_usuario,
     required this.tipo,
     required this.local,
     required this.descricao,
@@ -24,7 +24,7 @@ class Ocorrencia {
   factory Ocorrencia.fromJson(Map<String, dynamic> json) {
     return Ocorrencia(
       id: json['id'].toString(),
-      idUsuario: json['id_usuario'],
+      id_usuario: json['id_usuario'],
       tipo: json['tipo'] as String,
       local: json['local'] as String,
       descricao: json['descricao'] as String,
@@ -39,7 +39,7 @@ class Ocorrencia {
 
   Map<String, dynamic> toJson() {
     return {
-      'id_usuario': idUsuario,
+      'id_usuario': id_usuario,
       'tipo': tipo,
       'local': local,
       'descricao': descricao,
