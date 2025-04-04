@@ -47,9 +47,10 @@ class _NovoComunicadoScreenState extends State<NovoComunicadoScreen> {
         titulo: _tituloController.text,
         mensagem: _mensagemController.text,
         dataEnvio: DateTime.now(),
-        idRemetente: widget.idRemetente,
+        // idRemetente: widget.idRemetente,
         prioridade: _prioridadeSelecionada,
         categoria: _categoriaSelecionada,
+        anexo: ""
       );
 
       await _repository.enviarComunicado(comunicado);

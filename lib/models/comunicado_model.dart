@@ -3,49 +3,41 @@ class Comunicado {
   final String titulo;
   final String mensagem;
   final DateTime dataEnvio;
-  final int idRemetente;
   final String prioridade;
   final String categoria;
-  final List<int>? lidoPor;
-  final String? anexo;
+  String? anexo;
 
   Comunicado({
     this.id,
+    this.anexo,
     required this.titulo,
     required this.mensagem,
     required this.dataEnvio,
-    required this.idRemetente,
-    this.prioridade = 'normal',
-    this.categoria = 'geral',
-    this.lidoPor = const [],
-    this.anexo,
+    required this.prioridade,
+    required this.categoria,
   });
 
   factory Comunicado.fromJson(Map<String, dynamic> json) {
     return Comunicado(
-      id: json['id'],
-      titulo: json['titulo'],
-      mensagem: json['mensagem'],
-      dataEnvio: DateTime.parse(json['data_envio']),
-      idRemetente: json['id_remetente'],
-      prioridade: json['prioridade'],
-      categoria: json['categoria'],
-      lidoPor: List<int>.from(json['lido_por']),
-      anexo: json['anexo'],
+      id: json['id'].toString(),
+      titulo: json['titulo'] as String,
+      mensagem: json['mensagem'] as String,
+      dataEnvio: DateTime.parse(json['data_envio'] as String),
+      prioridade: json['prioridade'] as String,
+      categoria: json['categoria'] as String,
+      anexo: json['anexo'] as String 
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      if (id != null) 'id': id,
-      'titulo': titulo,
-      'mensagem': mensagem,
-      'data_envio': dataEnvio.toIso8601String(),
-      'id_remetente': idRemetente,
-      'prioridade': prioridade,
-      'categoria': categoria,
-      'lido_por': lidoPor,
-      'anexo': anexo,
-    };
-  }
+  return {
+    'titulo': titulo,
+    'mensagem': mensagem,
+    'data_envio': dataEnvio.toIso8601String(), // <- importante!
+    'id_remetente': 1,
+    'prioridade': prioridade,
+    'categoria': categoria,
+    'anexo': anexo
+  };
+}
 }
