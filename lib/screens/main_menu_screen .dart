@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reserva_hub_admin/screens/espacos_screen.dart';
+import 'package:reserva_hub_admin/screens/home_screen.dart';
 import 'package:reserva_hub_admin/screens/novo_comunicado_screen.dart';
 import 'package:reserva_hub_admin/screens/ocorrencias_screen.dart';
 
@@ -10,9 +11,9 @@ class MainMenuScreen extends StatefulWidget {
 
 class _MainMenuScreenState extends State<MainMenuScreen> {
   int _currentIndex = 0;
-  
-  // Lista de telas correspondentes a cada aba
+
   final List<Widget> _screens = [
+    HomeScreen(), // agora é a tela inicial
     OcorrenciaScreen(),
     EspacosScreen(),
     NovoComunicadoScreen(idRemetente: 1),
@@ -22,39 +23,21 @@ class _MainMenuScreenState extends State<MainMenuScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Reserva Hub Admin'),
+        title: const Text('Reserva Hub Admin'),
         centerTitle: true,
-        bottomOpacity: 3,
-        actions: [
-          // IconButton(
-          //   icon: Icon(Icons.search),
-          //   onPressed: () {
-          //     // Implementar busca
-          //   },
-          // ),
-          // IconButton(
-          //   icon: Icon(Icons.more_vert),
-          //   onPressed: () {
-          //     // Menu adicional
-          //   },
-          // ),
-        ],
       ),
       body: _screens[_currentIndex],
-      // floatingActionButton: _currentIndex == 0 
-      //     ? FloatingActionButton(
-      //         child: Icon(Icons.refresh),
-      //         onPressed: () {
-      //           // Adicionar nova ocorrência
-      //         },
-      //       )
-      //     : null,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) => setState(() => _currentIndex = index),
         selectedItemColor: Colors.orange,
         unselectedItemColor: Colors.grey,
-        items: [
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.dashboard),
+            label: 'Início',
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.warning),
             label: 'Ocorrências',
