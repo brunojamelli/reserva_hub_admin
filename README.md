@@ -32,6 +32,7 @@ flutter run
 - mime
 - flutter_native_splash
 - flutter_launcher_icons
+- shared_preferences
 
 ## Equipe
 Bruno Jamelli e Cintia Nunes
