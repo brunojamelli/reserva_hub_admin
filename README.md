@@ -20,5 +20,18 @@ flutter pub get
 flutter run
 ```
 
+### Usuário de Teste
+**email:** admin@condominio.com
+**senha:** admin123
+
+
+### Libs Utilizadas
+- DIO
+- flutter_dotenv
+- path_provider
+- mime
+- flutter_native_splash
+- flutter_launcher_icons
+
 ## Equipe
 Bruno Jamelli e Cintia Nunes
