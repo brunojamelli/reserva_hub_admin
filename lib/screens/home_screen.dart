@@ -24,10 +24,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Início'),
-      //   centerTitle: true,
-      // ),
       body: FutureBuilder<List<Ocorrencia>>(
         future: _ocorrenciasFuture,
         builder: (context, snapshot) {

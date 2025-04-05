@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reserva_hub_admin/repositories/auth_repository.dart';
 import 'package:reserva_hub_admin/screens/main_menu_screen%20.dart';
+import 'package:reserva_hub_admin/services/user_storage_service.dart';
 import '../models/usuario_model.dart';
 
 
@@ -16,6 +17,12 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _senhaController = TextEditingController();
   bool _isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    _checkLoginStatus();
+  }
+
 
   // Future<void> _login() async {
   //   if (!_formKey.currentState!.validate()) return;
@@ -43,6 +50,15 @@ class _LoginPageState extends State<LoginPage> {
   //     if (mounted) setState(() => _isLoading = false);
   //   }
   // }
+  Future<void> _checkLoginStatus() async {
+    final user = await UserStorageService().getUser();
+    if (user != null && mounted) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => MainMenuScreen()),
+      );
+    }
+  }
   Future<void> _login() async {
     if (!_formKey.currentState!.validate()) return;
 
@@ -53,6 +69,7 @@ class _LoginPageState extends State<LoginPage> {
       final usuario = await repository.login(_emailController.text, _senhaController.text);
 
       if (usuario != null) {
+        await UserStorageService().saveUser(usuario);
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Bem-vindo, ${usuario.nome}!')),
